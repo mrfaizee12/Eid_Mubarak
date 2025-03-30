@@ -3,6 +3,22 @@ import random
 
 st.set_page_config(page_title="Eid Mubarak", page_icon="🎉")
 
+# Light & Dark Mode Toggle using Sidebar
+mode = st.sidebar.radio("Select Mode:", ["Light", "Dark"])
+
+# Define text and background colors based on mode
+text_color = "black" if mode == "Light" else "white"
+background_color = "white" if mode == "Light" else "black"
+
+# Apply background color using custom CSS
+st.markdown(f"""
+    <style>
+        .stApp {{
+            background-color: {background_color};
+        }}
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("✨ Assalamualaikum ✨")
 st.write("Click the button to receive a special Eid blessing!")
 
@@ -25,7 +41,7 @@ if st.button("Click Here"):
     <h2 style='text-align: center; color: gold;'>
         🎉 Eid Mubarak to You from FAIZEE! 🎉
     </h2>
-    <p style='text-align: center; font-size: 20px; color: black;'>
+    <p style='text-align: center; font-size: 20px; color: {text_color};'>
         {random_blessing}
     </p>
     """, unsafe_allow_html=True)
